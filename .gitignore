@@ -54,8 +54,7 @@ Thumbs.db
 .env.test
 .env.production
 
-# PDF Reports
-reports/
+
 
 # IDEs and editors
 .vscode/
