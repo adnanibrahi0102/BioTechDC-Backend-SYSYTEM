@@ -150,8 +150,8 @@ export const generateAndSendReport = async (req, res) => {
     const pdfPath = generatePDF(report, patient);
     const downloadLink = `${req.protocol}://${req.get('host')}/api/v1/reports/download/${report._id}`;
 
-    const emailText = `Your lab report is ready. Download it from the link below:\n${downloadLink}`;
-    const emailHtml = `<p>Your lab report is ready. Download it from the link below:</p><p><a href="${downloadLink}">Download Report</a></p>`;
+    const emailText = `Dear ${patient.name},\n\nYour lab report is ready. Download it from the link below:\n${downloadLink}`;
+    const emailHtml = `<p>Dear ${patient.name},</p><p>Your lab report is ready. Download it from the link below:</p><p><a href="${downloadLink}">Download Report</a></p>`;
 
     await sendEmail(patient.email, emailText, emailHtml);
 
