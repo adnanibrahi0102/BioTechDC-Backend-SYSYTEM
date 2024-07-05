@@ -1,18 +1,26 @@
-import { Resend } from "resend";
+import nodemailer from 'nodemailer';
 
 
-const resend = new Resend('re_6s1WVT13_LTLiw9kuQ9b7boVhMqvjowiw');
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+    },
+});
 
 export const sendEmail = async (to, text, html) => {
     try {
-        const response = await resend.emails.send({
-            from: process.env.RESEND_EMAIL,
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
             to,
-            subject: 'BoiTech DC | Your Lab Report is Ready',
+            subject: 'Biotech DC | Your Lab Report is Ready',
             text,
             html,
-        });
-        console.log("from resend",response)
+        };
+
+        const response = await transporter.sendMail(mailOptions);
+        console.log('Email sent:', response);
         return response;
     } catch (error) {
         console.error('Error sending email:', error);
