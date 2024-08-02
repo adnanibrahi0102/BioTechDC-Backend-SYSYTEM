@@ -3,6 +3,7 @@ import { Patient } from "../models/patient.model.js";
 
 export const createPatientController = async (req, res) => {
     const { name, age, gender, address, phone, email, tests, examinedBy, amount, paymentStatus } = req.body;
+    
 
     if (!name || typeof age !== "number" || !gender || !address || !phone || !email || !examinedBy || typeof amount !== "number" || typeof paymentStatus !== "boolean") {
         return res.status(400).json({

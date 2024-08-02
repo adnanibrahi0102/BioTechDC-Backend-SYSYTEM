@@ -46,6 +46,7 @@ const patientSchema = new Schema(
             default: false
         }
        
+       
     },
     {
         timestamps: true

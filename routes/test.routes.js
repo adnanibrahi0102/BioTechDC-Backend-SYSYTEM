@@ -8,7 +8,7 @@ router.route("/createTest").post( verifyJwt,isAdmin,createTestController);
 
 router.route("/getTest/:testId").get(verifyJwt , isAdmin , getTestController);
 
-router.route("/getAllTests").get(verifyJwt , isAdmin, getAllTestsController);
+router.route("/getAllTests").get( getAllTestsController);
 
 router.route("/deleteTest/:testId").delete(verifyJwt , isAdmin, deleteTestController);
 

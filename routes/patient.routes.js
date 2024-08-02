@@ -5,7 +5,7 @@ import { isAdmin, verifyJwt } from '../middlewares/auth.middleware.js';
 
 const router = Router();
 
-router.route("/createPatient").post(verifyJwt , isAdmin , createPatientController);
+router.route("/createPatient").post(verifyJwt, createPatientController);
 
 router.route("/getPatient/:patientId").get(verifyJwt , isAdmin , getPatientController);
 
